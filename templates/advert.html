@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-success">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            Name: {{ ad.name }}<br>
+            Offer: {{ ad.offer }}<br>
+            Desc: {{ ad.description }}<br>
+            House: {{ ad.house_number }}<br>
+            File: {{ ad.filename }}<br>
+            Delivery: {{ ad.delivery }}<br>
+            Date: {{ ad.date }}<br>
+            Phone: {{ ad.phone }}<br>
+            Cat1: {{ ad.category_one }}<br>
+            Cat2: {{ ad.category_two }}<br>
+        </div>
+        <div class="col-md-6">
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

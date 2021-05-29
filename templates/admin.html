@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="mt-5">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-success">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+        {% if data %}
+        {% for ad in data %}
+        {% if not ad.is_approved %}
+        <div class="list-group mb-1">
+            <div class="list-group-item list-group-item-action flex-column align-items-start active">
+              <div class="d-flex w-100 justify-content-between">
+                
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{ url_for('static', filename='uploads/')}}{{ ad.filename }}" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="mb-1">{{ ad.offer }}</h5>
+                        <p class="mb-1">{{ ad.description }}</p>
+                    </div>
+                    <div class="col-md-2">
+                        
+                        <div class="mb-1"> 
+                            <a href="{{ url_for('approve') }}{{ ad._id }}" class="btn btn-success btn-block"> Aceitar</a>
+                        </div>
+                        <div class="mb-1"> 
+                            <a target="_blank" href="#" class="btn btn-success btn-block"><i class="fa fa-whatsapp" aria-hidden="true"></i> Whatsapp</a>
+                        </div>
+                        <div class="mb-1">
+                            <a target="_blank" href="{{ url_for('user') }}{{ ad.user_id }}" class="btn btn-primary btn-block"><i class="fa fa-user-circle" aria-hidden="true"></i> Usuario</a>
+                        </div>
+                    </div>
+                </div> 
+                
+              </div>
+              <div class="row">
+                <div class="col-md-12 mt-2 p-3">
+                    <span class="badge badge-pill badge-info mt-3">{{ ad.category }}</span>
+                    <span class="badge badge-pill badge-primary mt-3">{{ ad.name }}</span>
+                    <span class="badge badge-pill badge-warning mt-3">{{ ad.house_number }}</span>
+                </div>
+            </div>
+        </div> 
+        {% endif %}    
+        {% endfor %}
+        {% endif %}
+
+</div>
+{% endblock %}

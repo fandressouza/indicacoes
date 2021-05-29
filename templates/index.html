@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<section class="section-full main-img">
+   <div class="container vertical-center">
+      <div class="jumbotron custom-jumbotron">
+         <h2 class="mt-3 custom-title">Bem-vindos a comunidade do Ninho Verde 2</h2>
+         <hr>
+         <p>
+            Temos como objetivo coletar o maior numero de informacoes possiveis para
+            ajudar os moradores do condominio. 
+         </p>
+         <a href="services.html" class="btn btn-info btn-lg">
+         Fale conosco</a>
+      </div>
+   </div>
+</section>
+<section class="text-center p-5">
+   <img style="width: 240px" class="img-responsive" src="{{ url_for('static', filename='img/logo.png') }}">
+</section>
+<section class="section-full main-plain">
+   <!-- Section: Testimonials v.1 -->
+   <div class="container text-center my-5 p-1">
+      <!-- Section heading -->
+      <!-- <h2 class="h1-responsive font-weight-bold my-5">Acesso Rapido</h2> -->
+      <!-- Section description -->
+      <h6 class="dark-grey-text w-responsive mx-auto mb-5">
+         <strong>Nossos fornecedores Premium</strong>
+      </h6>
+      <!-- Grid row -->
+      <div class="row">
+         <!--Grid column-->
+         <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+            <!--Card-->
+            <div class="card testimonial-card shadow">
+               <!--Background color-->
+               <div class="card-up info-color"></div>
+               <!--Avatar-->
+               <div class="avatar mx-auto white">
+                  <img src="{{ url_for('static', filename='img/logo.png') }}" class="img-fluid">
+               </div>
+               <div class="card-body">
+                  <!--Name-->
+                  <h6 class="font-weight-bold mb-4">Seu anuncio aqui</h6>
+                  <hr>
+                  <!--Quotation-->
+                  <p class="dark-grey-text mt-4">
+                     <i class="fa fa-star" aria-hidden="true"></i>
+                     <i class="fa fa-star" aria-hidden="true"></i>
+                     <i class="fa fa-star" aria-hidden="true"></i>
+                     <i class="fa fa-star" aria-hidden="true"></i>
+                     <i class="fa fa-star" aria-hidden="true"></i>
+                  <p>
+                     Otimo atendimento e estava tudo maravilhoso!
+                  </p>
+                  <p>
+                     <small>Publicado: 12/01/2021</small>
+                  </p>
+                  </p>
+                  <!--Contact Buttons-->
+                  <a class="btn btn-info btn-small" href="tel:551149713228"><i class="fa fa-phone-square" aria-hidden="true"></i>
+                  Ligar agora
+                  </a>
+                  <a class="btn btn-success btn-small" href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i>
+                  Whatsapp
+                  </a>
+               </div>
+            </div>
+            <!--Card-->
+         </div>
+         <!--Grid column-->
+         <!--Grid column-->
+         <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
+            <!--Card-->
+            <div class="card testimonial-card shadow">
+               <!--Background color-->
+               <div class="card-up blue-gradient">
+               </div>
+               <!--Avatar-->
+               <div class="avatar mx-auto white">
+                  <img src="{{ url_for('static', filename='img/logo.png') }}" class="img-fluid">
+               </div>
+               <div class="card-body">
+                  <!--Name-->
+                  <h6 class="font-weight-bold mb-4">
+                     Seu anuncio aqui
+                  </h6>
+                  <hr>
+                  <!--Quotation-->
+                  <p class="dark-grey-text mt-4">
+                     <i class="fa fa-star" aria-hidden="true"></i>
+                     <i class="fa fa-star" aria-hidden="true"></i>
+                     <i class="fa fa-star" aria-hidden="true"></i>
+                     <i class="fa fa-star" aria-hidden="true"></i>
+                     <i class="fa fa-star" aria-hidden="true"></i>
+                  <p>
+                     Otimo atendimento e estava tudo maravilhoso!
+                  </p>
+                  <p>
+                     <small>Publicado: 12/01/2021</small>
+                  </p>
+                  </p>
+                  <!--Contact Buttons-->
+                  <a class="btn btn-info btn-small" href="tel:551149713228"><i class="fa fa-phone-square" aria-hidden="true"></i>
+                  Ligar agora
+                  </a>
+                  <a class="btn btn-success btn-small" href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i>
+                  Whatsapp
+                  </a>
+               </div>
+            </div>
+            <!--Card-->
+         </div>
+         <!--Grid column-->
+         <!--Grid column-->
+         <div class="col-lg-4 col-md-6">
+            <!--Card-->
+            <div class="card testimonial-card shadow">
+               <!--Background color-->
+               <div class="card-up indigo"></div>
+               <!--Avatar-->
+               <div class="avatar mx-auto white">
+                  <img src="{{ url_for('static', filename='img/logo.png') }}" class="img-fluid">
+               </div>
+               <div class="card-body">
+                  <!--Name-->
+                  <h6 class="font-weight-bold mb-4">Seu anuncio aqui</h6>
+                  <hr>
+                  <!--Quotation-->
+                  <p class="dark-grey-text mt-4">
+                     <i class="fa fa-star" aria-hidden="true"></i>
+                     <i class="fa fa-star" aria-hidden="true"></i>
+                     <i class="fa fa-star" aria-hidden="true"></i>
+                     <i class="fa fa-star" aria-hidden="true"></i>
+                     <i class="fa fa-star" aria-hidden="true"></i>
+                  <p>
+                     Otimo atendimento e estava tudo maravilhoso!
+                  </p>
+                  <p>
+                     <small>Publicado: 12/01/2021</small>
+                  </p>
+                  </p>
+                  <!--Contact Buttons-->
+                  <a class="btn btn-info btn-small" href="tel:551149713228"><i class="fa fa-phone-square" aria-hidden="true"></i>
+                  Ligar agora
+                  </a>
+                  <a class="btn btn-success btn-small" href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i>
+                  Whatsapp
+                  </a>
+               </div>
+            </div>
+            <!--Card-->
+         </div>
+         <!--Grid column-->
+      </div>
+      <!-- Grid row -->
+   </div>
+   <!-- Section: Testimonials v.1 -->
+</section>
+{% endblock %}

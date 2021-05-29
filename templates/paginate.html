@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<div class="container mb-4 mt-4">
+
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Dropdown for main category -->
+                <div class="dropdown mb-4">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categoria Principal
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                           
+                        <a class="dropdown-item" href="{{ url_for('view') }}/Alimentação">Alimentação</a>
+                        <a class="dropdown-item" href="{{ url_for('view') }}/Serviços construtivos">Serviços construtivos</a>
+                        <a class="dropdown-item" href="{{ url_for('view') }}/Transportes">Transportes</a>
+                        <a class="dropdown-item" href="{{ url_for('view') }}/Entregas (Motoboy)">Entregas (Motoboy)</a>
+                        <a class="dropdown-item" href="{{ url_for('view') }}/Imóveis">Imóveis</a>
+                        <a class="dropdown-item" href="{{ url_for('view') }}/Serviços outros">Serviços outros</a>
+                    </div>
+                </div>
+                <!-- Dropdown for main category -->
+            </div>
+            <div class="col-md-6">
+                <!-- <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="list-group list-group-horizontal float-right">
+                            <a href=""><li class="list-group-item">First item</li></a>
+                            <a href=""><li class="list-group-item">Second item</li></a>
+                            <a href=""><li class="list-group-item">Third item</li></a>
+                            <a href=""><li class="list-group-item">Fourth item</li></a>
+                        </ul>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for ad in ads %}
+            {% if ad.is_approved %}
+            <div class="col-md-4 mt-2 mb-2">
+                
+                <!--Card-->
+                <div class="card testimonial-card shadow">
+                    <!--Background color-->
+                    <div class="card-up indigo"></div>
+                    <!--Avatar-->
+                    <div class="avatar mx-auto white">
+                    <img src="{{ url_for('static', filename='uploads/')}}{{ ad.filename }}" class="img-fluid" style="border-radius: 2px">
+                    </div>
+                    <div class="card-body">
+                    <!--Name-->
+                    <h6 class="font-weight-bold mb-4">{{ ad.offer }}</h6>
+                    <p>
+                        <small>{{ ad.name }}</small><br>
+                        <a href="#"><span class="badge badge-pill badge-light mt-3">{{ ad.category_one }}</span></a>
+                        <a href="#"><span class="badge badge-pill badge-light mt-3">{{ ad.category_two }}</span></a>
+                    </p>
+                    </p>
+                    {% if 'user' in session %}
+                    <!--Contact Buttons-->
+                    <a class="btn btn-info btn-block" href="tel:{{ ad.phone }}"><i class="fa fa-phone-square" aria-hidden="true"></i>
+                    Ligar agora
+                    </a>
+                    <a class="btn btn-success btn-block" href="tel:{{ ad.phone }}"><i class="fa fa-whatsapp" aria-hidden="true"></i>
+                    Whatsapp
+                    </a>
+                    <a class="btn btn-default btn-block" href="{{ url_for('advert') }}{{ ad._id }}"><i class="fa fa-external" aria-hidden="true"></i>
+                    Saiba mais
+                    </a>
+                    {% else %}
+                    <!--Contact Buttons-->
+                    <a class="btn btn-info btn-block" href="{{ url_for('login') }}"><i class="fa fa-phone-square" aria-hidden="true"></i>
+                    Ligar agora
+                    </a>
+                    <a class="btn btn-success btn-block" href="{{ url_for('login') }}"><i class="fa fa-whatsapp" aria-hidden="true"></i>
+                    Whatsapp
+                    </a>
+                    {% endif %}
+                    </div>
+                </div>
+                <!--Card-->
+                
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class="container mt-4">
+    <!--PAGINATION-->
+    {{ pagination.links }}
+    <!--PAGINATION-->
+</div>
+{% endblock %}
