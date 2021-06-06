@@ -17,19 +17,30 @@
 
     <div class="row">
         <div class="col-md-6">
-            Name: {{ ad.name }}<br>
-            Offer: {{ ad.offer }}<br>
-            Desc: {{ ad.description }}<br>
-            House: {{ ad.house_number }}<br>
-            File: {{ ad.filename }}<br>
-            Delivery: {{ ad.delivery }}<br>
-            Date: {{ ad.date }}<br>
-            Phone: {{ ad.phone }}<br>
-            Cat1: {{ ad.category_one }}<br>
-            Cat2: {{ ad.category_two }}<br>
+            <img src="{{ url_for('static', filename='uploads/')}}{{ ad.filename }}" class="img-fluid img-thumbnail" style="border-radius: 2px">
         </div>
         <div class="col-md-6">
-            
+            <h2 class="mt-3">{{ ad.offer }}</h2>
+            <p class="mt-3 mb-3">
+                <a href="#"><span class="badge badge-pill badge-light">{{ ad.category_one }}</span></a>
+                <a href="#"><span class="badge badge-pill badge-light">{{ ad.category_two }}</span></a>
+                <a href="#"><span class="badge badge-pill badge-info"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ ad.house_number }}</span></a>
+                {% if ad.delivery == "y" %}
+                <a href="#"><span class="badge badge-pill badge-success"><i class="fa fa-check" aria-hidden="true"></i> Fazemos Entrega</span></a>
+                {% else %}
+                <a href="#"><span class="badge badge-pill badge-danger"><i class="fa fa-times" aria-hidden="true"></i> Nao Fazemos Entrega</span></a>
+                {% endif %}
+            </p>
+            <p class="mt-3 mb-3">
+                {{ ad.description }}
+            </p>
+
+            <a class="btn btn-info btn-block" href="tel:{{ ad.phone }}"><i class="fa fa-phone-square" aria-hidden="true"></i>
+                Ligar agora
+            </a>
+            <a class="btn btn-success btn-block" href="tel:{{ ad.phone }}"><i class="fa fa-whatsapp" aria-hidden="true"></i>
+                Whatsapp
+            </a>
         </div>
     </div>
 </div>

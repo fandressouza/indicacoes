@@ -43,6 +43,8 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 # Set up an instance of PyMongo
 mongo = PyMongo(app)
 
+
+
 # Function to crop image so space is saved and loading time improves
 # https://stackoverflow.com/a/20361739
 def crop_image(image):
@@ -57,6 +59,8 @@ def crop_image(image):
 
     cropped.save(image,optimize=True,quality=70)
 
+
+
 # Resize image
 def resize_image(image):
     im = Image.open(image)
@@ -66,15 +70,12 @@ def resize_image(image):
     out.save(image, optimize=True, quality=80)
 
 
-
+# Get ads from mongodb collection
 def get_ads():
     return mongo.db.ads.find()
 
-@app.errorhandler(BadRequest)
-def handle_bad_request(e):
-    return render_template("404.html"), 404
 
-app.register_error_handler(404, handle_bad_request)
+
 
 # Function used to validate file extensions
 def allowed_file(filename):
@@ -314,7 +315,8 @@ def login():
 
 
 
-
+# By default, when a user is registered, the is_admin and is_banned flags are set to false
+# For now admins can only be definied through mongo Atlas interface
 @app.route("/register", methods=["GET", "POST"])
 def register():
     form = RegisterForm()
@@ -346,6 +348,7 @@ def register():
             # call the db to get the user again and get user id which has been generated
             user = mongo.db.users.find_one({"email": session["user"]})
 
+            # Set variables to session storage so I can do conditional logic on templates
             session["user"] = request.form.get("email")
             session["name"] = request.form.get("name")
             session["user_id"] = str(user["_id"])
@@ -355,6 +358,7 @@ def register():
     return render_template("register.html", form=form)
 
 
+# in order to logout correctly, I'm checking if the user is login or not
 @app.route("/logout")
 @login_required
 def logout():
@@ -365,6 +369,15 @@ def logout():
     session.pop("is_banned", None)
     
     return redirect(url_for("login"))
+
+
+
+# Error handling
+@app.errorhandler(BadRequest)
+def handle_bad_request(e):
+    return render_template("404.html"), 404
+
+app.register_error_handler(404, handle_bad_request)
 
 
 if __name__ == "__main__":
